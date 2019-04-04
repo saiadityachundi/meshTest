@@ -16,5 +16,7 @@ port = 1230 + int(namespace.strip(namespace_word))
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
+f = open("/dev/urandom")
+
 while True:
-    sock.sendto("Hello GCS, I am " + namespace + "\n", (ip, port))
+    sock.sendto(f.read(4096) + namespace + "\n", (ip, port))

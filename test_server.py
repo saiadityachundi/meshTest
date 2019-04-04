@@ -8,7 +8,7 @@ import subprocess
 if len(sys.argv) > 1:
     time_window = sys.argv[1]
 else:
-    time_window = '2'
+    time_window = '3'
 
 # get the interface
 output = subprocess.check_output(["ip", "link", "show"])
@@ -42,6 +42,7 @@ while True:
 
     lines.pop(0)
     while len(lines) > 1:
+        print
         one = lines.pop(0).split()
         two = lines.pop(0).split()
 
@@ -49,6 +50,6 @@ while True:
 
         if one[0].split('.')[0][:3] == "192" or two[0].split('.')[0][:3] == "192":
             print ' '.join(two[:3])+"ps"
-            print
+            rate = two[2]+"ps"
+            print "rate:", rate
     print "==================================================================="
-    print
